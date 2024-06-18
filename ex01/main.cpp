@@ -61,15 +61,13 @@ int main()
 	std::cout << std::endl;
 	std::cout << "DEEP COPY TEST" << std::endl;
 	Cat *originalCat = new Cat();
-	Cat *copiedCat = new Cat(*originalCat); // Realizar una copia profunda
+	Cat *copiedCat = new Cat(*originalCat);
 	originalCat->makeSound();
 	originalCat->getBrain()->setIdeas(0, "Idea propia");
 
-	// Modificar el objeto copiado
 	copiedCat->makeSound();
 	copiedCat->getBrain()->setIdeas(0, "Idea no copiada");
 
-	// Imprimir las ideas del objeto original y copiado
 	if (originalCat->getBrain()->getIdeas(0) != NULL)
 		std::cout << "Original Cat idea: " << *originalCat->getBrain()->getIdeas(0) << std::endl;
 	if (copiedCat->getBrain()->getIdeas(0) != NULL)
