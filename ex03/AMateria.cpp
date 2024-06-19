@@ -6,11 +6,12 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:49:41 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/18 15:25:52 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:05:32 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+
 AMateria::AMateria()
 {
 	this->type = "";
@@ -59,5 +60,6 @@ AMateria* AMateria::clone() const
 
 void	AMateria::use(ICharacter& target)
 {
+	(void)target;
 	std::cout << "AMateria function use()" << std::endl;
 }

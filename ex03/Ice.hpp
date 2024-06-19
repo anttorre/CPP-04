@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:18:14 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/18 15:22:48 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:24:22 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ class Ice : public AMateria
 {
 	public:
 		Ice();
-		Ice(Ice &other);
+		Ice(const Ice &other);
 		~Ice();
-		Ice& operator=(Ice& other);
+		Ice& operator=(const Ice& other);
 		void	use(ICharacter &target);
+		AMateria* clone() const;
 };

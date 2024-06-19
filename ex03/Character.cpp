@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:19:41 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/18 17:26:18 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:07:06 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ Character::Character(Character &other)
 Character::~Character()
 {
 	std::cout << "Character destructor called\n";
+	delete [] this->inventory;
 }
 
 Character& Character::operator=(Character &other)
@@ -43,7 +44,15 @@ Character& Character::operator=(Character &other)
 	if (this != &other)
 	{
 		this->name = other.name;
-		this->inventory[4] = {NULL};
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->inventory[i])
+				delete this->inventory[i];
+			if (other.inventory[i])
+				this->inventory[i] = other.inventory[i]->clone();
+			else
+				this->inventory[i] = NULL;
+		}
 	}
 	return *this;
 }
