@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:19:41 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 15:11:59 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:38:37 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,10 @@ void	Character::use(int idx, ICharacter& target)
 	else
 	{
 		if (this->inventory[idx])
+		{
 			this->inventory[idx]->use(target);
+			std::cout << &this->inventory[idx] << std::endl;
+		}
 		else
 			std::cout << "Can't use this materia\n";
 	}

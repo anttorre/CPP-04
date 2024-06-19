@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:59:50 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 15:11:03 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 15:54:43 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
 	me->equip(tmp);
 	
 	ICharacter* bob = new Character("bob");
-	ICharacter *ant = new Character(*static_cast<Character*>(bob));
+	ICharacter *ant = new Character(*(Character *)(me));
 	AMateria* tmp2 = src->createMateria("cure");
 	ant->equip(tmp2);
 	
@@ -41,9 +41,13 @@ int main()
 	std::cout << "OUTPUT" << std::endl;
 	me->use(0, *bob);
 	me->use(1, *bob);
-	ant->use(1, *ant);
+	ant->use(0, *ant);
+	ant->unequip(0);
+	ant->use(1, *bob);
+	ant->use(0, *ant);
+	me->use(0, *bob);
 	std::cout << std::endl;
-
+	
 	delete bob;
 	delete me;
 	delete src;
