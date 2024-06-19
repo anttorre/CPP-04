@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:59:50 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 15:54:43 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:17:22 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ int main()
 	ICharacter* me = new Character("me");
 	
 	AMateria* tmp;
+	AMateria* tmp3;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
-	tmp = src->createMateria("cure");
-	me->equip(tmp);
+	tmp3 = src->createMateria("cure");
+	me->equip(tmp3);
 	
 	ICharacter* bob = new Character("bob");
-	ICharacter *ant = new Character(*(Character *)(me));
+	Character *ant = new Character(*(Character *)(me));
 	AMateria* tmp2 = src->createMateria("cure");
 	ant->equip(tmp2);
 	
@@ -42,6 +43,7 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 	ant->use(0, *ant);
+	AMateria *saveIce = ant->getMateria(0);
 	ant->unequip(0);
 	ant->use(1, *bob);
 	ant->use(0, *ant);
@@ -51,6 +53,8 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
+	delete ant;
+	delete saveIce;
 	
 	return 0;
 }

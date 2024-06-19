@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:19:41 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 15:38:37 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:16:39 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,17 @@ Character& Character::operator=(Character &other)
 std::string const& Character::getName() const 
 {
 	return this->name;
+}
+
+AMateria* Character::getMateria(int idx)
+{
+	if (idx < 0 || idx > 4)
+	{
+		std::cout << "Index out of bounds.\n";
+		return (NULL);
+	}
+	else
+		return this->inventory[idx];
 }
 
 void	Character::equip(AMateria *m)

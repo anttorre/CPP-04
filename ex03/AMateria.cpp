@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:49:41 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 13:05:32 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:00:02 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	AMateria::setType(std::string type)
 
 AMateria* AMateria::clone() const
 {
-	return (AMateria *)this;
+	return (AMateria*)this;
 }
 
 void	AMateria::use(ICharacter& target)
