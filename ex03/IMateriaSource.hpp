@@ -6,10 +6,11 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:47:22 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 11:55:40 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:10:12 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "AMateria.hpp"
 
 class IMateriaSource
