@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:00:29 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 12:58:41 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 13:29:36 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ MateriaSource::MateriaSource(MateriaSource &other)
 MateriaSource::~MateriaSource()
 {
 	std::cout << "MateriaSource destructor called\n";
-	delete [] materias;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->materias[i])
+			delete this->materias[i];
+	}
+	
 }
 
 MateriaSource& MateriaSource::operator=(MateriaSource &other)
@@ -54,7 +59,7 @@ void	MateriaSource::learnMateria(AMateria *materia)
 		if (this->materias[i] == NULL)
 		{
 			this->materias[i] = materia;
-			std::cout << "Materia " << materia->getType() << "learned\n";
+			std::cout << "Materia " << materia->getType() << " learned\n";
 			return ;
 		}
 	}

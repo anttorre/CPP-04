@@ -10,7 +10,7 @@ WHITE	:= \033[37;1m
 RESET	:= \033[0m
 
 CC = clang++
-CFLAGS = -g -fsanitize=address,undefined -Wall -Werror -Wextra 
+CFLAGS = -g -Wall -Werror -Wextra 
 #-fsanitize=address,undefined
 NAME = Materia
 

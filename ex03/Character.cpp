@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:19:41 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 13:07:06 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/19 14:51:26 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,21 @@ Character::Character()
 {
 	std::cout << "Character default constructor called\n";
 	this->name = "";
-	this->inventory[4] = {NULL};
+	for (int i = 0; i < 4; i++)
+	{
+		this->inventory[i] = NULL;
+	}
+	
 }
 
 Character::Character(std::string name)
 {
 	std::cout << "Character param constructor called\n";
 	this->name = name;
-	this->inventory[4] = {NULL};
+	for (int i = 0; i < 4; i++)
+	{
+		this->inventory[i] = NULL;
+	}
 }
 
 Character::Character(Character &other)
@@ -35,7 +42,11 @@ Character::Character(Character &other)
 Character::~Character()
 {
 	std::cout << "Character destructor called\n";
-	delete [] this->inventory;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->inventory[i])
+			delete this->inventory[i];
+	}
 }
 
 Character& Character::operator=(Character &other)
@@ -70,6 +81,7 @@ void	Character::equip(AMateria *m)
 		{
 			this->inventory[i] = m;
 			std::cout << "Materia " << m->getType() << " equipped\n";
+			return ;
 		}
 	}
 	std::cout << "Inventory full\n";
