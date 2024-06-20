@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:59:50 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 16:17:22 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:38:32 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,13 @@ int main()
 	ICharacter* bob = new Character("bob");
 	Character *ant = new Character(*(Character *)(me));
 	AMateria* tmp2 = src->createMateria("cure");
+	AMateria* tmp4 = src->createMateria("cure");
+	AMateria* tmp5 = src->createMateria("cure");
+	AMateria* tmp6 = src->createMateria("cure");
 	ant->equip(tmp2);
+	ant->equip(tmp4);
+	ant->equip(tmp5);
+	ant->equip(tmp6);
 	
 	std::cout << std::endl;
 	std::cout << "OUTPUT" << std::endl;

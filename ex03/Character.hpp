@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 15:43:26 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 16:13:14 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:15:11 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class Character : public ICharacter
 	private:
 		std::string name;
 		AMateria *inventory[4];
+		AMateria *toDelete[500];
 	public:
 		Character();
 		Character (std::string name);

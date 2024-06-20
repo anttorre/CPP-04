@@ -6,11 +6,12 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:19:41 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/19 16:16:39 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:20:20 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
+#include <cstdlib>
 
 Character::Character()
 {
@@ -20,7 +21,10 @@ Character::Character()
 	{
 		this->inventory[i] = NULL;
 	}
-	
+	for (int i = 0; i < 500; i++)
+	{
+		this->toDelete[i] = NULL;
+	}
 }
 
 Character::Character(std::string name)
@@ -30,6 +34,10 @@ Character::Character(std::string name)
 	for (int i = 0; i < 4; i++)
 	{
 		this->inventory[i] = NULL;
+	}
+	for (int i = 0; i < 500; i++)
+	{
+		this->toDelete[i] = NULL;
 	}
 }
 
@@ -47,6 +55,11 @@ Character::~Character()
 		if (this->inventory[i])
 			delete this->inventory[i];
 	}
+	for (int i = 0; i < 500; i++)
+	{
+		if (this->toDelete[i])
+			delete this->toDelete[i];
+	}
 }
 
 Character& Character::operator=(Character &other)
@@ -63,6 +76,15 @@ Character& Character::operator=(Character &other)
 				this->inventory[i] = other.inventory[i]->clone();
 			else
 				this->inventory[i] = NULL;
+		}
+		for (int i = 0; i < 500; i++)
+		{
+			if (this->toDelete[i])
+				delete this->toDelete[i];
+			if (other.toDelete[i])
+				this->toDelete[i] = other.toDelete[i]->clone();
+			else
+				this->toDelete[i] = NULL;
 		}
 	}
 	return *this;
@@ -86,16 +108,29 @@ AMateria* Character::getMateria(int idx)
 
 void	Character::equip(AMateria *m)
 {
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->inventory[i] == NULL)
-		{
-			this->inventory[i] = m;
-			std::cout << "Materia " << m->getType() << " equipped\n";
-			return ;
-		}
-	}
-	std::cout << "Inventory full\n";
+	bool inventoryFull = true; 
+    for (int i = 0; i < 4; i++) 
+    { 
+        if (this->inventory[i] == NULL) 
+        { 
+            this->inventory[i] = m; 
+            std::cout << "Materia " << m->getType() << " equipped\n"; 
+            inventoryFull = false; 
+            return; 
+        } 
+    } 
+    if (inventoryFull) 
+    { 
+        for (int j = 0; j < 500; j++) 
+        { 
+            if (this->toDelete[j] == NULL) 
+            { 
+                this->toDelete[j] = m; 
+                std::cout << "Inventory full\n"; 
+                return; 
+            } 
+        } 
+    } 
 }
 
 void	Character::unequip(int idx)
@@ -121,7 +156,6 @@ void	Character::use(int idx, ICharacter& target)
 		if (this->inventory[idx])
 		{
 			this->inventory[idx]->use(target);
-			std::cout << &this->inventory[idx] << std::endl;
 		}
 		else
 			std::cout << "Can't use this materia\n";
