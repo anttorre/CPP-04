@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:33:19 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/14 16:19:36 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:07:28 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Dog& Dog::operator=(Dog &other)
 	std::cout << "Dog assignment operator called." << std::endl;
 	if (this != &other)
 	{
+		delete this->brain;
 		this->type = other.type;
 		this->brain = new Brain(*other.brain);
 	}

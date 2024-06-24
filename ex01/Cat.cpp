@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:33:28 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/14 16:19:28 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:07:17 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Cat& Cat::operator=(Cat &other)
 	std::cout << "Cat assignment operator called." << std::endl;
 	if (this != &other)
 	{
+		delete this->brain;
 		this->type = other.type;
 		this->brain = new Brain(*other.brain);
 	}

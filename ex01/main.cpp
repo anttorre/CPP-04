@@ -6,7 +6,7 @@
 /*   By: anttorre <anttorre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 12:41:10 by anttorre          #+#    #+#             */
-/*   Updated: 2024/06/14 16:20:19 by anttorre         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:08:23 by anttorre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ int main()
 	std::cout << std::endl;
 	std::cout << "DEEP COPY TEST" << std::endl;
 	Cat *originalCat = new Cat();
-	Cat *copiedCat = new Cat(*originalCat);
+	Cat *copiedCat = new Cat();
+	*copiedCat = * originalCat;
 	originalCat->makeSound();
 	originalCat->getBrain()->setIdeas(0, "Idea propia");
+
 
 	copiedCat->makeSound();
 	copiedCat->getBrain()->setIdeas(0, "Idea no copiada");
